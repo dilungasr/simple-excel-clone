@@ -32,8 +32,11 @@ const alphabets = [
   "Z",
 ];
 
+//holds the logical representation of the spreadsheet
+// - it's a two-dimensional array of array[row][column] structure
 const spreadsheet = [];
 
+// models the individual spreadsheet cell state
 class Cell {
   constructor(
     isHeader,
@@ -56,6 +59,9 @@ class Cell {
   }
 }
 
+// add click listener to the export button
+// that converts spreadsheet data to csv, converts it to the binary
+// file to be downloaded and finally downloads it
 exportBtn.addEventListener("click", () => {
   let csv = "";
 
@@ -67,6 +73,8 @@ exportBtn.addEventListener("click", () => {
         .join(",") + "\r\n";
   }
 
+  //   Blob converts the csv string to binary object (which can eventually
+  //    be downloaed as a file)
   const csvObj = new Blob([csv]);
   const csvURL = URL.createObjectURL(csvObj);
 
@@ -76,7 +84,9 @@ exportBtn.addEventListener("click", () => {
   a.click();
 });
 
+//initializes the logical represantation of the spreadsheet
 initSpreadsheet();
+// draws the spreadsheet based on the logical representation of the spreadsheet
 drawSpreadsheet();
 
 function initSpreadsheet() {
@@ -136,6 +146,7 @@ function drawSpreadsheet() {
   }
 }
 
+//creates the actual html element of the spreadsheet cell
 function createCellEl(cell) {
   const cellEl = document.createElement("input");
   cellEl.className = "cell";
@@ -147,13 +158,19 @@ function createCellEl(cell) {
     cellEl.classList.add("header");
   }
 
-  cellEl.addEventListener("focus", () => handleCellClick(cell));
+  cellEl.addEventListener("focus", () => handleCellFocus(cell));
   cellEl.addEventListener("change", (ev) => updateCellData(cell, ev));
 
   return cellEl;
 }
 
-function handleCellClick(cell) {
+// updateCellData handles onchange event of the cell
+function updateCellData(cell, ev) {
+  cell.data = ev.target.value;
+}
+
+// handleCellFocus handles the focus event of the cell
+function handleCellFocus(cell) {
   currentCellTracker.textContent = `${cell.columnName}${cell.rowName}`;
   const rowHeader = spreadsheet[0][cell.column];
   const colHeader = spreadsheet[cell.row][0];
@@ -167,17 +184,15 @@ function handleCellClick(cell) {
   colHeaderEl.classList.add("active");
 }
 
+//returns the DOM html element of the cell
 function getCellEl(row, col) {
   return document.getElementById(`cell-${row}${col}`);
 }
 
+// clearHeaderActiveStates removes highlights from the active column and row headers
 function clearHeaderActiveStates() {
   const headers = document.querySelectorAll(".header");
   headers.forEach((el) => {
     el.classList.remove("active");
   });
-}
-
-function updateCellData(cell, ev) {
-  cell.data = ev.target.value;
 }
