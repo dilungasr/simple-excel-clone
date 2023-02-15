@@ -1,4 +1,4 @@
-#Simple Excel Clone
+# Simple Excel Clone
 A simple spreadsheet using html, css and vanilla JavaScript.
 
 <img src="screenshot.png" alt="Simple excel clone using html, css and javascript">
@@ -12,7 +12,7 @@ Just clone this repo and open the `index.html` using your favourite browser.
 email: dilungathegreat@gmail.com
 WhatsApp: +255 745 453 831
 
-#####Don't forget to give it a star if you find it useful.
+##### Don't forget to give it a star if you find it useful.
 
 Love you,
 Happy Coding!
