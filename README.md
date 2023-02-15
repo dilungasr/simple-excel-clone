@@ -12,5 +12,7 @@ Just clone this repo and open the `index.html` using your favourite browser.
 email: dilungathegreat@gmail.com
 WhatsApp: +255 745 453 831
 
+#####Don't forget to give it a star if you find it useful.
+
 Love you,
 Happy Coding!
