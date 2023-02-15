@@ -15,7 +15,7 @@ email: dilungathegreat@gmail.com
 WhatsApp: +255 745 453 831
 </pre>
 
-##### Don't forget to give it a star if you find it useful.
+##### Don't forget to give it a star if you find it useful ;) 
 
 <pre>
 Love you,
