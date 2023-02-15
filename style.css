@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
+.cell-row {
+  display: flex;
+}
+
+.cell {
+  width: 90px;
+  height: 40px;
+  border: 2px solid #555;
+  outline: none;
+}
+.cell:focus {
+  border: 3px solid dodgerblue;
+  background-color: #ddd;
+}
+
+.cell.header {
+  background-color: lightgray;
+  text-align: center;
+}
+.cell.header.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+#export-btn {
+  margin-bottom: 10px;
+  padding: 10px;
+  background: green;
+  color: white;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#current-cell-tracker-wrapper {
+  padding-bottom: 10px;
+}
